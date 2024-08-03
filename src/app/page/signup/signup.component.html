@@ -1,0 +1,80 @@
+<div class="login-container">
+  <mat-card>
+    <mat-card-title>Sign Up&nbsp;<mat-icon>lock_open</mat-icon></mat-card-title>
+    <mat-card-content>
+      <div class="field-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your name</mat-label>
+          <input
+            matInput
+            placeholder="john_doe"
+            [formControl]="name"
+            (blur)="updateErrorMessage()"
+            required
+          />
+          <mat-icon matSuffix>add_reaction</mat-icon>
+          @if (name.invalid) {
+          <mat-error>{{ errorMessageName() }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            [formControl]="email"
+            (blur)="updateErrorMessage()"
+            required
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          @if (email.invalid) {
+          <mat-error>{{ errorMessageEmail() }}</mat-error
+          >}
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            [formControl]="password"
+            required
+            (blur)="updateErrorMessage()"
+            [type]="hide() ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="clickEvent($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide()"
+            class="password-toggle-button"
+          >
+            <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          @if (password.invalid) {
+          <mat-error>{{ errorMessagePassword() }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="signup()"
+        [disabled]="signupBtnDis()"
+        class="login-button"
+      >
+        <mat-icon class="login-mat-icon">download</mat-icon>
+        &nbsp;Signup
+      </button>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="additional-options">
+        <button mat-button class="sign-up" (click)="toLogin()">
+          Already have account, Login?
+        </button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>
