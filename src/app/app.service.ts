@@ -7,7 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AppService {
 
   // BASE_URL = 'https://gitcraftapi.onrender.com';
-  BASE_URL = 'http://localhost:8080';
+  // BASE_URL = 'http://localhost:8080';
+  BASE_URL = "https://gitcraftbackend.onrender.com"
 
   loading = false;
 
